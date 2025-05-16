@@ -1,0 +1,35 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+env/
+venv/
+ENV/
+.venv/
+
+# Django stuff:
+staticfiles/
+media/
+db.sqlite3
+
+# IDEs and editors
+.vscode/
+.idea/
+
+# Env files
+.env
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# Coverage reports
+htmlcov/
+.coverage
+.pytest_cache/
+
+myenv
