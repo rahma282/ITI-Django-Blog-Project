@@ -1,0 +1,21 @@
+{% extends "shared/base.html" %}
+{% load static %}
+
+{% block css_file %}
+    <link rel="stylesheet" href="{% static 'style/style.css' %}">
+{% endblock css_file %}
+
+{% block title %}{{ author.first_name }}{% endblock title %}
+
+{% block content %}
+    <div class="post-container">
+        <div class="author-info">
+            <h1>Author Details</h1>
+            <ul>
+                <li><strong>Name:</strong> {{ author.first_name }} {{ author.last_name }}</li>
+                <li><strong>Email:</strong> {{ author.email }}</li>
+                <li><strong>Phone:</strong> {{ author.phone }}</li>
+            </ul>
+        </div>
+    </div>
+{% endblock content %}

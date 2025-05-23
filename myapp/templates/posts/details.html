@@ -1,0 +1,50 @@
+{% extends "shared/base.html" %}
+{% load static %}
+
+{% block css_file %}
+    <link rel="stylesheet" href="{% static 'style/style.css' %}">
+{% endblock css_file %}
+
+{% block title %}{{ post.title }}{% endblock title %}
+
+{% block content %}
+<div class="post-container">
+    <h1 class="post-title">{{ post.title }}</h1>
+
+    {% if post.image_url %}
+        <img src="{{ post.image_url }}" alt="{{ post.title }}" class="post-image">
+    {% endif %}
+
+    <p class="post-content">{{ post.content }}</p>
+
+    <div class="author-info">
+        <h2>Author Details</h2>
+        <ul>
+            <li>
+                <strong>Name:</strong>
+                <a href="{% url 'author' post.author.id %}">
+                    {{ post.author.first_name }} {{ post.author.last_name }}
+                </a>
+            </li>
+            <li><strong>Email:</strong> {{ post.author.email }}</li>
+            <li><strong>Phone:</strong> {{ post.author.phone }}</li>
+        </ul>
+    </div>
+
+    <div class="comments-section">
+        <h2>Comments</h2>
+        {% if comments %}
+            <ul>
+                {% for comment in comments %}
+                    <li class="comment">
+                        <p>{{ comment.content }}</p>
+                        <small>By {{ comment.created_by.first_name }} {{ comment.created_by.last_name }} on {{ comment.created_at|date:"F j, Y" }}</small>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No comments yet.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}
